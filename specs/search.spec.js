@@ -5,6 +5,7 @@ const invalidProduct ='Nike air presto you'
 describe("Evershop website automation test suite",()=>{
    
  it("succesfully search a valid product",async()=>{
+    await searchActions.scrollToCredit()
         // await searchActions.clickSearchIcon()
         // await searchActions.EnterProductName(productName)
         await searchActions.search(searchText)

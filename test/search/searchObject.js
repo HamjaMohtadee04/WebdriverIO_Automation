@@ -9,6 +9,9 @@ get searchInputField(){
 searchResults(searchText){
     return $$(`//span[contains(text(),'${searchText}')]`)
 }
+get allRights(){
+    return $("//span[contains(text(),'All Rights')]")
+}
 }
 
 module.exports = new SearchObjects();

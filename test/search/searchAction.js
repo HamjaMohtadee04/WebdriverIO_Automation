@@ -22,5 +22,10 @@ class SearchActions{
      }
      return searchedData
     }
+
+    async scrollToCredit(){
+        await searchObject.allRights.scrollIntoView({behavior:"smooth"})
+        await browser.pause(5000)
+    }
 }
 module.exports = new SearchActions();
