@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "wdio":"wdio run ./wdio.conf.js",
-    "accAndsearch":"wdio run ./wdio.conf.js --suite accountAndSearch"
+    "wdio": "wdio run ./wdio.conf.js",
+    "accAndsearch": "wdio run ./wdio.conf.js --suite accountAndSearch",
+    "getReport":"allure generate --clean allure-results && allure open allure-report"
   },
   "author": "hamja",
   "license": "ISC",
@@ -16,5 +17,9 @@
     "@wdio/mocha-framework": "^9.15.0",
     "@wdio/spec-reporter": "^9.15.0",
     "@wdio/visual-service": "^8.0.4"
+  },
+  "dependencies": {
+    "@wdio/allure-reporter": "^9.15.0",
+    "allure-commandline": "^2.34.0"
   }
 }

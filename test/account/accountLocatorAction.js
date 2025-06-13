@@ -1,8 +1,10 @@
+const accountLocatorObject = require("./accountLocatorObject")
 const AccountLocator = require("./accountLocatorObject")
 
 
 class Account{
     async clickAccountIcon(){
+        await AccountLocator.accountIcon.waitForClickable({timeout:20000})
         await AccountLocator.accountIcon.click()
     }
     async enterEmail(email){

@@ -22,7 +22,7 @@ exports.config = {
     // The path of the spec files will be resolved relative from the directory of
     // of the config file unless it's absolute.
     //
-    specs: [search],
+    specs: [account,search],
     suites:{
 accountAndSearch:[[search,account]]
     },
@@ -126,7 +126,12 @@ accountAndSearch:[[search,account]]
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    // reporters: ['spec'],
+    reporters: [['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: false,
+        disableWebdriverScreenshotsReporting: false,
+    }]],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -231,8 +236,13 @@ accountAndSearch:[[search,account]]
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest:async function(test, context, { error, result, duration, passed, retries }) {
+    if (error){
+        const screenshot = await browser.takeScreenshot()
+        allure.addAttachment("Screenshot",Buffer.from(screenshot,"base64"),
+        "failure/png")
+    }
+    },
 
 
     /**
